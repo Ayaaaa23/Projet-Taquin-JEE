@@ -1,9 +1,0 @@
-com\puzzle\taquin\config\AppConfig.class
-com\puzzle\taquin\repository\PartieRepository.class
-com\puzzle\taquin\service\PuzzleService.class
-com\puzzle\taquin\config\PersistenceConfig.class
-com\puzzle\taquin\model\Partie.class
-com\puzzle\taquin\config\AppInitializer.class
-com\puzzle\taquin\controller\PuzzleController.class
-com\puzzle\taquin\repository\JoueurRepository.class
-com\puzzle\taquin\model\Joueur.class
