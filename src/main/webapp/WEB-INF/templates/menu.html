@@ -9,16 +9,16 @@
 </head>
 <body>
     <div>
-        <h1>📋 Menu Principal</h1>
-        <h3>✨ Nouvelle partie</h3>
+        <h1> Menu Principal</h1>
+        <h3> Nouvelle partie</h3>
         <div>
-            <a href="/nouvelle-partie?niveau=1" class="btn">🌟 Niveau 1 (3x3)</a>
-            <a href="/nouvelle-partie?niveau=2" class="btn">⚡ Niveau 2 (4x4)</a>
-            <a href="/nouvelle-partie?niveau=3" class="btn">🔥 Niveau 3 (5x5)</a>
+            <a href="/nouvelle-partie?niveau=1" class="btn"> Niveau 1 (3x3)</a>
+            <a href="/nouvelle-partie?niveau=2" class="btn"> Niveau 2 (4x4)</a>
+            <a href="/nouvelle-partie?niveau=3" class="btn"> Niveau 3 (5x5)</a>
         </div>
 
         <div class="sauvegarde" th:if="${!parties.isEmpty()}">
-            <h3>💾 Parties sauvegardées</h3>
+            <h3> Parties sauvegardées</h3>
             <ul>
                 <li th:each="p : ${parties}">
                     <a th:href="'/jeu?partieId=' + ${p.id}" class="btn" style="background: #28a745;">
@@ -28,7 +28,7 @@
             </ul>
         </div>
         <div th:if="${parties.isEmpty()}">
-            <p>📭 Aucune partie sauvegardée. Commencez une nouvelle aventure !</p>
+            <p> Aucune partie sauvegardée. Commencez une nouvelle aventure !</p>
         </div>
     </div>
 </body>
