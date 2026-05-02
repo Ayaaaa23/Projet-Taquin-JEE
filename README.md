@@ -24,7 +24,10 @@ Le joueur doit reconstituer une image mélangée en déplaçant les pièces. Tro
 -  Affichage de l’image modèle (aperçu)
 -  Score (nombre de mouvements)
 - Chronomètre qui démarre au premier mouvement
--  Sauvegarde automatique après chaque déplacement
+- Indice : bouton affichant/masquant les numéros des pièces (aide ou vérification)
+-  Scroll préservé : la page ne remonte plus après un déplacement, même sur grilles 4x4 et 5x5
+- Images adaptées : les fragments suivent l’ordre colonne par colonne (contrainte de l’outil de découpage, gérée par transposition de la grille solution)
+- Sauvegarde automatique après chaque déplacement
 -  Sauvegarde manuelle via un bouton
 -  Reprise d’une partie sauvegardée
 - Bouton "Rejouer" (mélange la même grille, reset score et chrono)
