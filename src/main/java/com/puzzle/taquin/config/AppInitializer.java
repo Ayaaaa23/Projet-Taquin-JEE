@@ -34,5 +34,10 @@ public class AppInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcher", servlet);
         registration.setLoadOnStartup(1);
         registration.addMapping("/");
+       
+        ServletRegistration.Dynamic h2Servlet = servletContext.addServlet("h2Console", new org.h2.server.web.JakartaWebServlet());
+        h2Servlet.addMapping("/h2-console/*");
+        h2Servlet.setLoadOnStartup(2);
+    
     }
 }

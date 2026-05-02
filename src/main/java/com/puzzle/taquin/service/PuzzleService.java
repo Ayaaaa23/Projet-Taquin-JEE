@@ -27,14 +27,15 @@ public class PuzzleService {
     }
 
     private int[][] grilleSolution(int taille) {
-        int[][] grille = new int[taille][taille];
-        for (int i = 0; i < taille; i++) {
-            for (int j = 0; j < taille; j++) {
-                grille[i][j] = i * taille + j;
-            }
+    int[][] grille = new int[taille][taille];
+    for (int i = 0; i < taille; i++) {
+        for (int j = 0; j < taille; j++) {
+            // Au lieu de i*taille + j, on utilise j*taille + i
+            grille[i][j] = j * taille + i;
         }
-        return grille;
     }
+    return grille;
+}
 
     private List<int[]> getVoisins(int lig, int col, int taille) {
         List<int[]> voisins = new ArrayList<>();
@@ -78,15 +79,16 @@ public class PuzzleService {
     }
 
     public boolean estGagnee(int[][] grille, int taille) {
-        for (int i = 0; i < taille; i++) {
-            for (int j = 0; j < taille; j++) {
-                if (grille[i][j] != i * taille + j) {
-                    return false;
-                }
+    for (int i = 0; i < taille; i++) {
+        for (int j = 0; j < taille; j++) {
+            // Compare avec la même transposition
+            if (grille[i][j] != j * taille + i) {
+                return false;
             }
         }
-        return true;
     }
+    return true;
+}
 
     public String grilleToJson(int[][] grille) {
         ObjectMapper mapper = new ObjectMapper();

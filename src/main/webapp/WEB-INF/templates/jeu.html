@@ -32,13 +32,14 @@
             <th:block th:each="row, rowStat : ${grille}">
                 <th:block th:each="val, colStat : ${row}">
                     <div th:if="${val != videIndex}"
-                         class="cell"
-                         th:data-row="${rowStat.index}"
-                         th:data-col="${colStat.index}"
-                         onclick="deplacer(this)">
-                        <img th:src="'/images/niveau' + ${partie.niveau} + '/' + ${val} + '.png'"
-                             th:alt="${val}">
-                    </div>
+     class="cell"
+     th:data-row="${rowStat.index}"
+     th:data-col="${colStat.index}"
+     onclick="deplacer(this)">
+    <img th:src="'/images/niveau' + ${partie.niveau} + '/' + ${val} + '.png'"
+         th:alt="${val}">
+    <span class="piece-number" th:text="${val}"></span>
+</div>
                     <div th:if="${val == videIndex}" class="cell empty"></div>
                 </th:block>
             </th:block>
@@ -58,6 +59,7 @@
             <form action="/sauvegarder" method="post" style="display: inline;">
                 <input type="hidden" name="partieId" th:value="${partie.id}">
                 <button type="submit"> Sauvegarder</button>
+                <button type="button" id="indiceBtn" onclick="toggleIndices()">🔍 Indice</button>
             </form>
         </div>
     </div>
@@ -65,6 +67,19 @@
     <script>
         // Récupération de l'ID de la partie depuis Thymeleaf
         const partieId = [[${partie.id}]];
+
+// Sauvegarde du scroll avant rechargement
+window.addEventListener('beforeunload', function() {
+    localStorage.setItem('scrollPos', window.scrollY);
+});
+// Restauration du scroll après rechargement
+window.addEventListener('load', function() {
+    let scrollPos = localStorage.getItem('scrollPos');
+    if (scrollPos) {
+        window.scrollTo(0, parseInt(scrollPos));
+        localStorage.removeItem('scrollPos');
+    }
+});
 
         // Met à jour l'affichage du chronomètre
         function updateChronoDisplay() {
@@ -112,6 +127,17 @@
                 }
             });
         }
+        // Afficher/masquer les indices (numéros des pièces)
+let indicesVisible = false;
+function toggleIndices() {
+    const spans = document.querySelectorAll('.piece-number');
+    indicesVisible = !indicesVisible;
+    spans.forEach(span => {
+        span.style.display = indicesVisible ? 'block' : 'none';
+    });
+    const btn = document.getElementById('indiceBtn');
+    btn.textContent = indicesVisible ? '🙈 Masquer indices' : '🔍 Afficher indices';
+}
 
         // Mise à jour périodique de l'affichage
         setInterval(updateChronoDisplay, 1000);
